@@ -16,6 +16,7 @@ import ComponentWithState from '../6_comp-state/ComponentWithState';
 import ComponentWithProps from '../7_comp-props/ComponentWithProps';
 import PropTypesRoot from '../8_prop-types/PropTypesComponent';
 import ComponentWithBehavior from '../9_comp-methods/ComponentWithBehavior';
+import ClassVsFunctionalComponents from '../10_class-vs-function/ClassVsFunctionalComponents';
 
 var data = {
     id: 1,
@@ -40,7 +41,8 @@ const RootComponent = () => {
 
             {/* <ComponentWithProps {...data} /> */}
             {/* <PropTypesRoot /> */}
-            <ComponentWithBehavior />
+            {/* <ComponentWithBehavior /> */}
+            <ClassVsFunctionalComponents />
         </div>
     );
 };
