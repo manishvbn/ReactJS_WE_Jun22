@@ -37,9 +37,13 @@ class ControlledVsUncontrolledComponent extends Component {
                 <h2 className="text-info">Name is: {this.state.name}</h2> */}
 
                 {/* Uncontrolled */}
-                <input type="text" defaultValue={this.state.name} ref={this.inputRef} />
+                {/* <input type="text" defaultValue={this.state.name} ref={this.inputRef} />
                 <h2 className="text-info">Name is: {this.state.name}</h2>
-                <button className='btn btn-info' onClick={this.handleClick}>Click</button>
+                <button className='btn btn-info' onClick={this.handleClick}>Click</button> */}
+
+                {/* Amol Query */}
+                <input type="text" defaultValue={this.state.name} onChange={this.handleChange} />
+                <h2 className="text-info">Name is: {this.state.name}</h2>
             </div>
         );
     }
