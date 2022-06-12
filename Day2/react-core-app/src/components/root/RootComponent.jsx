@@ -8,6 +8,7 @@ import CounterAssignment from '../4_counter-assignment/CounterAssignment';
 import ControlledVsUncontrolledComponent from '../5_controlled-vs-uncontrolled/ControlledVsUncontrolledComponent';
 import CalculatorAssignment from '../6_calculator-assignment/CalculatorAssignment';
 import ListRoot from '../7_list/ListComponent';
+import ContextAPIDemo from '../8_context/ContextAPIDemo';
 
 const RootComponent = () => {
     return (
@@ -18,7 +19,8 @@ const RootComponent = () => {
             {/* <CounterAssignment /> */}
             {/* <ControlledVsUncontrolledComponent /> */}
             {/* <CalculatorAssignment /> */}
-            <ListRoot />
+            {/* <ListRoot /> */}
+            <ContextAPIDemo />
         </div>
     );
 };
