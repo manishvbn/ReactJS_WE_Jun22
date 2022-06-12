@@ -1,6 +1,7 @@
 /* eslint-disable */
 
 import React, { Component } from 'react';
+import TextInput from '../common/TextInput';
 
 class CalculatorOne extends Component {
     constructor(props) {
@@ -173,12 +174,67 @@ class CalculatorThree extends Component {
     }
 }
 
+class CalculatorFour extends Component {
+    constructor(props) {
+        super(props);
+        this.state = { data: { t1: 0, t2: 0 }, result: 0 };
+        this.handleSubmit = this.handleSubmit.bind(this);
+        this.reset = this.reset.bind(this);
+        this.handleChange = this.handleChange.bind(this);
+    }
+
+    handleChange(e) {
+        const field = e.target.id;
+        var obj = { ...this.state.data };
+        obj[field] = e.target.value;
+        this.setState({ data: obj });
+    }
+
+    handleSubmit(e) {
+        e.preventDefault();
+        this.setState({ result: parseInt(this.state.data.t1) + parseInt(this.state.data.t2) });
+    }
+
+    reset(e) {
+        this.setState({ data: { t1: 0, t2: 0 }, result: 0 });
+    }
+
+    render() {
+        return (
+            <div className="row">
+                <div className="col-sm-6 offset-sm-3">
+                    <form className="justify-content-center" onSubmit={this.handleSubmit}>
+                        <fieldset>
+                            <legend className="text-center">Calculator Four - UI Composition</legend>
+
+                            <TextInput label={"Number One"} name={"t1"} value={this.state.data.t1}
+                                onChange={this.handleChange} />
+
+                            <TextInput label={"Number Two"} name={"t2"} value={this.state.data.t2}
+                                onChange={this.handleChange} />
+
+                            <div className="form-group mb-2 mt-2">
+                                <h3>Result: {this.state.result}</h3>
+                            </div>
+                            <div className="d-grid gap-2 mx-auto">
+                                <button type="submit" className="btn btn-success">Add</button>
+                                <button type="reset" className="btn btn-primary" onClick={this.reset}>Reset</button>
+                            </div>
+                        </fieldset>
+                    </form>
+                </div>
+            </div>
+        );
+    }
+}
+
 const CalculatorAssignment = () => {
     return (
         <div>
             {/* <CalculatorOne /> */}
             {/* <CalculatorTwo /> */}
-            <CalculatorThree />
+            {/* <CalculatorThree /> */}
+            <CalculatorFour />
         </div>
     );
 };
