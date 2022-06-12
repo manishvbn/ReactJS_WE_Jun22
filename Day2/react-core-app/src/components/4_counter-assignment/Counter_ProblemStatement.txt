@@ -11,3 +11,5 @@ On 10 total clicks on any, or both + and - buttons,
 The textbox, + and - button should be disbaled and reset button should be enabled. 
 
 When we click Reset button, everything should be re-initialized.
+
+Completion Time : 11:00 am
