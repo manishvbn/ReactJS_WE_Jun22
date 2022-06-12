@@ -103,6 +103,11 @@ class ListRoot extends Component {
                 <DataTable items={this.state.posts}>
                     <h4 className="text-primary text-uppercase font-weight-bold">Posts Table</h4>
                 </DataTable>
+
+                {/* <DataTable>
+                    <h4 className="text-primary text-uppercase font-weight-bold">Employees Table</h4>
+                </DataTable> */}
+
             </div>
         );
     }

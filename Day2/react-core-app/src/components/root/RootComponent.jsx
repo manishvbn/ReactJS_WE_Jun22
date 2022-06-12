@@ -10,19 +10,22 @@ import CalculatorAssignment from '../6_calculator-assignment/CalculatorAssignmen
 import ListRoot from '../7_list/ListComponent';
 import ContextAPIDemo from '../8_context/ContextAPIDemo';
 import SiblingCommunication from '../8_context/SiblingCommunication';
+import ErrorHandler from '../common/ErrorHandler';
 
 const RootComponent = () => {
     return (
         <div className='container'>
-            {/* <LCDemoComponent /> */}
-            {/* <PureImpureComponent /> */}
-            {/* <EventComponent /> */}
-            {/* <CounterAssignment /> */}
-            {/* <ControlledVsUncontrolledComponent /> */}
-            {/* <CalculatorAssignment /> */}
-            {/* <ListRoot /> */}
-            {/* <ContextAPIDemo /> */}
-            <SiblingCommunication />
+            <ErrorHandler>
+                {/* <LCDemoComponent /> */}
+                {/* <PureImpureComponent /> */}
+                {/* <EventComponent /> */}
+                {/* <CounterAssignment /> */}
+                {/* <ControlledVsUncontrolledComponent /> */}
+                {/* <CalculatorAssignment /> */}
+                <ListRoot />
+                {/* <ContextAPIDemo /> */}
+                {/* <SiblingCommunication /> */}
+            </ErrorHandler>
         </div>
     );
 };
