@@ -1,3 +1,5 @@
+/* eslint-disable */
+
 import React, { Component } from 'react';
 
 class CalculatorOne extends Component {
@@ -51,10 +53,74 @@ class CalculatorOne extends Component {
     }
 }
 
+class CalculatorTwo extends Component {
+    constructor(props) {
+        super(props);
+        this.state = { data: { t1: 0, t2: 0 }, result: 0 };
+        this.handleSubmit = this.handleSubmit.bind(this);
+        this.reset = this.reset.bind(this);
+        this.handleChange1 = this.handleChange1.bind(this);
+        this.handleChange2 = this.handleChange2.bind(this);
+    }
+
+    handleChange1(e) {
+        var obj = { ...this.state.data };
+        obj.t1 = e.target.value;
+        this.setState({ data: obj });
+    }
+
+    handleChange2(e) {
+        var obj = { ...this.state.data };
+        obj.t2 = e.target.value;
+        this.setState({ data: obj });
+    }
+
+    handleSubmit(e) {
+        e.preventDefault();
+        this.setState({ result: parseInt(this.state.data.t1) + parseInt(this.state.data.t2) });
+    }
+
+    reset(e) {
+        this.setState({ data: { t1: 0, t2: 0 }, result: 0 });
+    }
+
+    render() {
+        return (
+            <div className="row">
+                <div className="col-sm-6 offset-sm-3">
+                    <form className="justify-content-center" onSubmit={this.handleSubmit}>
+                        <fieldset>
+                            <legend className="text-center">Calculator Two - Controlled</legend>
+                            <div className="form-group mb-1">
+                                <label className="mb-0" htmlFor="t1">Number One</label>
+                                <input type="text" className="form-control" id="t1" value={this.state.data.t1}
+                                    onChange={this.handleChange1} />
+                            </div>
+                            <div className="form-group mb-1">
+                                <label className="mb-0" htmlFor="t2">Number Two</label>
+                                <input type="text" className="form-control" id="t2" value={this.state.data.t2}
+                                    onChange={this.handleChange2} />
+                            </div>
+                            <div className="form-group mb-2 mt-2">
+                                <h3>Result: {this.state.result}</h3>
+                            </div>
+                            <div className="d-grid gap-2 mx-auto">
+                                <button type="submit" className="btn btn-success">Add</button>
+                                <button type="reset" className="btn btn-primary" onClick={this.reset}>Reset</button>
+                            </div>
+                        </fieldset>
+                    </form>
+                </div>
+            </div>
+        );
+    }
+}
+
 const CalculatorAssignment = () => {
     return (
         <div>
-            <CalculatorOne />
+            {/* <CalculatorOne /> */}
+            <CalculatorTwo />
         </div>
     );
 };
