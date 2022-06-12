@@ -14,7 +14,9 @@ class Counter extends Component {
     _manageClickCount(e) {
         this._clickCount += 1;
         if (this._clickCount > 9) {
-            this.setState({ flag: true });
+            this.setState({ flag: true }, () => {
+                this.props.onMax(this.state.flag);
+            });
         }
     }
 
@@ -60,7 +62,9 @@ class Counter extends Component {
 
     reset(e) {
         this._clickCount = 0;
-        this.setState({ count: 0, flag: false });
+        this.setState({ count: 0, flag: false }, () => {
+            this.props.onMax(this.state.flag);
+        });
     }
 
     get _style() {
@@ -83,8 +87,17 @@ class Counter extends Component {
 class CounterAssignment extends Component {
     constructor(props) {
         super(props);
+        this.state = { message: "" };
         this._counterRef = React.createRef();
         this.p_reset = this.p_reset.bind(this);
+        this.updateMessage = this.updateMessage.bind(this);
+    }
+
+    updateMessage(flag) {
+        if (flag)
+            this.setState({ message: "Max Click Reached, please click reset button to restart" });
+        else
+            this.setState({ message: "" });
     }
 
     p_reset() {
@@ -96,7 +109,7 @@ class CounterAssignment extends Component {
         // if(this._counterRef.current)
         //     console.log(this._counterRef.current);
 
-        if(this._counterRef.current)
+        if (this._counterRef.current)
             this._counterRef.current.reset();
     }
 
@@ -104,13 +117,21 @@ class CounterAssignment extends Component {
         return (
             <>
                 <div>
-                    <h2 className="text-success text-center mt-5 mb-5">Calling Child Method from Parent using ref</h2>
+                    <h2 className="text-success text-center mt-5 mb-5">Calling Parent Method from Child Component</h2>
 
-                    {/* <Counter ref="c" />            Deprecated  */}
+                    {
+                        this.state.message ?
+                            <div className="alert alert-danger text-center mt-5">
+                                <h4>
+                                    <i className="bi bi-info-square-fill"></i>
+                                </h4>
+                                <h4 className="alert-heading">{this.state.message}</h4>
+                            </div>
+                            :
+                            null
+                    }
 
-                    {/* <Counter ref={elem => { this.c = elem; }} /> */}
-
-                    <Counter ref={this._counterRef} />
+                    <Counter interval={10} ref={this._counterRef} onMax={this.updateMessage} />
 
                     <div className="d-grid gap-2 mx-auto col-6 mt-5">
                         <button className="btn btn-warning" onClick={this.p_reset}>
@@ -118,6 +139,22 @@ class CounterAssignment extends Component {
                         </button>
                     </div>
                 </div>
+
+                {/* <div>
+                    <h2 className="text-success text-center mt-5 mb-5">Calling Child Method from Parent using ref</h2> */}
+
+                {/* <Counter interval={10} ref="c" />            Deprecated  */}
+
+                {/* <Counter interval={10} ref={elem => { this.c = elem; }} /> */}
+
+                {/* <Counter interval={10} ref={this._counterRef} />
+
+                    <div className="d-grid gap-2 mx-auto col-6 mt-5">
+                        <button className="btn btn-warning" onClick={this.p_reset}>
+                            <span className='fs-4'>Parent Reset</span>
+                        </button>
+                    </div>
+                </div> */}
 
                 {/* <div>
                     <Counter />
