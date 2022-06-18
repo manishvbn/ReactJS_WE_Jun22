@@ -1,25 +1,15 @@
-import React, { Component } from 'react';
+import React, { useState } from 'react';
 
 export const CounterContext = React.createContext();
 
-class CounterContextProvider extends Component {
-    constructor(props) {
-        super(props);
-        this.state = { count: 0 };
-        this.setCount = this.setCount.bind(this);
-    }
+const CounterContextProvider = (props) => {
+    const [count, setCount] = useState(0);
 
-    setCount(cCount) {
-        this.setState({ count: cCount });
-    }
-
-    render() {
-        return (
-            <CounterContext.Provider value={[this.state.count, this.setCount]}>
-                {this.props.children}
-            </CounterContext.Provider>
-        );
-    }
+    return (
+        <CounterContext.Provider value={[count, setCount]}>
+            {props.children}
+        </CounterContext.Provider>
+    );
 }
 
 export default CounterContextProvider;

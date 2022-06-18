@@ -1,73 +1,50 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import CounterContextProvider, { CounterContext } from '../../context/CounterContext';
+import { useContext } from 'react';
 
-class Counter extends Component {
-    static contextType = CounterContext;
+const Counter = (props) => {
+    const [count, setCount] = useContext(CounterContext);
 
-    constructor(props) {
-        super(props);
-        this._inc = this._inc.bind(this);
-        this._dec = this._dec.bind(this);
-    }
-
-    _inc(e) {
-        var [count, setCount] = this.context;
-        setCount(count + this.props.interval);
-    }
-
-    _dec(e) {
-        var [count, setCount] = this.context;
-        setCount(count - this.props.interval);
-    }
-
-    render() {
-        return (
-            <React.Fragment>
-                <div className="text-center mb-5">
-                    <h3 className="text-primary">Counter Component</h3>
-                </div>
-                <div className="d-grid gap-2 mx-auto col-6">
-                    <h2 className="text-info text-center">
-                        {this.context[0]}
-                    </h2>
-                    <button className="btn btn-info"
-                        onClick={this._inc}>
-                        <span className='fs-4'>+</span>
-                    </button>
-                    <button className="btn btn-info"
-                        onClick={this._dec}>
-                        <span className='fs-4'>-</span>
-                    </button>
-                </div>
-            </React.Fragment >
-        );
-    }
-
-    static get defaultProps() {
-        return {
-            interval: 1
-        };
-    }
-
-    static get propTypes() {
-        return {
-            interval: PropTypes.number
-        };
-    }
+    return (
+        <React.Fragment>
+            <div className="text-center mb-5">
+                <h3 className="text-primary">Counter Component</h3>
+            </div>
+            <div className="d-grid gap-2 mx-auto col-6">
+                <h2 className="text-info text-center">
+                    {count}
+                </h2>
+                <button className="btn btn-info"
+                    onClick={() => { setCount(count + 1); }}>
+                    <span className='fs-4'>+</span>
+                </button>
+                <button className="btn btn-info"
+                    onClick={() => { setCount(count - 1); }}>
+                    <span className='fs-4'>-</span>
+                </button>
+            </div>
+        </React.Fragment >
+    );
 }
 
-class CounterSibling extends Component {
-    static contextType = CounterContext;
+Counter.defaultProps = {
+    interval: 1
+};
 
-    render() {
-        return (
-            <div className="text-center">
-                <h3 className="text-success">Counter Sibling Component</h3>
-                <h2>Current Count is:  {this.context[0]}</h2>
-            </div>
-        );
-    }
+Counter.propTypes = {
+    interval: PropTypes.number
+};
+
+const CounterSibling = () => {
+    const [count] = useContext(CounterContext);
+
+    return (
+        <div className="text-center">
+            <h3 className="text-success">Counter Sibling Component</h3>
+            <h2>Current Count is: {count}</h2>
+        </div>
+    );
 }
 
 const SiblingCommunication = () => {
