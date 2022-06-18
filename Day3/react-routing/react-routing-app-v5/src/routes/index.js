@@ -1,6 +1,7 @@
 import React from 'react';
 import { Switch, Route, Link, useLocation } from "react-router-dom";
 import AboutComponent from '../components/about/AboutComponent';
+import AdminComponent from '../components/admin/AdminComponent';
 import HomeComponent from '../components/home/HomeComponent';
 import ProductsComponent from '../components/products/ProductsComponent';
 
@@ -11,6 +12,7 @@ export default (
         <Route exact path="/" component={HomeComponent} />
         <Route path="/about" component={AboutComponent} />
         <Route path="/products" component={ProductsComponent} />
+        <Route path="/admin" component={AdminComponent} />
         <Route path="*">
             <NoMatch />
         </Route>
