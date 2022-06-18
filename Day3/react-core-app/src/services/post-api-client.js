@@ -16,6 +16,16 @@ const postApiClient = {
                 reject("Communication Error...");
             })
         });
+    },
+
+    getAllPostsAsync: async function () {
+        try {
+            let response = await fetch(url);
+            let data = await response.json();
+            return data;
+        } catch (e) {
+            throw e;
+        }
     }
 };
 
