@@ -3,6 +3,7 @@
 import React from 'react';
 import CrudAssignment from '../1_crud/CrudAssignment';
 import AjaxComponent from '../2_ajax/AjaxComponent';
+import StateHookDemo from '../3_hooks/StateHookDemo';
 import ErrorHandler from '../common/ErrorHandler';
 
 const RootComponent = () => {
@@ -10,7 +11,8 @@ const RootComponent = () => {
         <div className='container'>
             <ErrorHandler>
                 {/* <CrudAssignment /> */}
-                <AjaxComponent />
+                {/* <AjaxComponent /> */}
+                <StateHookDemo />
             </ErrorHandler>
         </div>
     );
