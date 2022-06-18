@@ -85,6 +85,7 @@ const Counter = (props) => {
 }
 
 // Will Have a different Copy of State
+// If you want to share the same state, combine the same with context
 const CounterSibling = () => {
     const [state, dispatch] = useReducer(counterReducer, initialState);
 
