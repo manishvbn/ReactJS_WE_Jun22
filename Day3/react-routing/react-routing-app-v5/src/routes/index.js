@@ -2,6 +2,7 @@ import React from 'react';
 import { Switch, Route, Link, useLocation } from "react-router-dom";
 import AboutComponent from '../components/about/AboutComponent';
 import HomeComponent from '../components/home/HomeComponent';
+import ProductsComponent from '../components/products/ProductsComponent';
 
 const img404 = require('../assets/http-404.jpg');
 
@@ -9,6 +10,7 @@ export default (
     <Switch>
         <Route exact path="/" component={HomeComponent} />
         <Route path="/about" component={AboutComponent} />
+        <Route path="/products" component={ProductsComponent} />
         <Route path="*">
             <NoMatch />
         </Route>
