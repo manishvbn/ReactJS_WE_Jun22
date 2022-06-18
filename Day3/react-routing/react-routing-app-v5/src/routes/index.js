@@ -1,18 +1,32 @@
 import React from 'react';
-import { Switch, Route, Link, useLocation } from "react-router-dom";
+import { Switch, Route, Link, useLocation, Redirect } from "react-router-dom";
 import AboutComponent from '../components/about/AboutComponent';
 import AdminComponent from '../components/admin/AdminComponent';
 import HomeComponent from '../components/home/HomeComponent';
+import LoginComponent from '../components/login/LoginComponent';
 import ProductsComponent from '../components/products/ProductsComponent';
 
+import authenticatorClient from "../services/authenticator-api-client";
+
 const img404 = require('../assets/http-404.jpg');
+
+const SecuredRoute = ({ component: Component, ...args }) => {
+    return (
+        <Route {...args} render={
+            (props) => authenticatorClient.isAuthenticated
+                ? <Component {...props} />
+                : <Redirect to={{ pathname: '/login', state: { from: props.location } }} />
+        } />
+    );
+}
 
 export default (
     <Switch>
         <Route exact path="/" component={HomeComponent} />
         <Route path="/about" component={AboutComponent} />
         <Route path="/products" component={ProductsComponent} />
-        <Route path="/admin" component={AdminComponent} />
+        <SecuredRoute path="/admin" component={AdminComponent} />
+        <Route path="/login" component={LoginComponent} />
         <Route path="*">
             <NoMatch />
         </Route>
