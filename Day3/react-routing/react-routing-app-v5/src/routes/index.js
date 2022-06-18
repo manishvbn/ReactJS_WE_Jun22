@@ -1,12 +1,21 @@
-import React from 'react';
+import React, { lazy, Suspense } from 'react';
 import { Switch, Route, Link, useLocation, Redirect } from "react-router-dom";
-import AboutComponent from '../components/about/AboutComponent';
-import AdminComponent from '../components/admin/AdminComponent';
-import HomeComponent from '../components/home/HomeComponent';
-import LoginComponent from '../components/login/LoginComponent';
-import ProductsComponent from '../components/products/ProductsComponent';
 
 import authenticatorClient from "../services/authenticator-api-client";
+
+// Eager Loading
+import HomeComponent from '../components/home/HomeComponent';
+import LoaderAnimation from '../components/common/LoaderAnimation';
+// import AboutComponent from '../components/about/AboutComponent';
+// import AdminComponent from '../components/admin/AdminComponent';
+// import LoginComponent from '../components/login/LoginComponent';
+// import ProductsComponent from '../components/products/ProductsComponent';
+
+// Lazy Loading
+const AboutComponent = lazy(() => import('../components/about/AboutComponent'));
+const AdminComponent = lazy(() => import('../components/admin/AdminComponent'));
+const LoginComponent = lazy(() => import('../components/login/LoginComponent'));
+const ProductsComponent = lazy(() => import('../components/products/ProductsComponent'));
 
 const img404 = require('../assets/http-404.jpg');
 
@@ -21,16 +30,17 @@ const SecuredRoute = ({ component: Component, ...args }) => {
 }
 
 export default (
-    <Switch>
-        <Route exact path="/" component={HomeComponent} />
-        <Route path="/about" component={AboutComponent} />
-        <Route path="/products" component={ProductsComponent} />
-        <SecuredRoute path="/admin" component={AdminComponent} />
-        <Route path="/login" component={LoginComponent} />
-        <Route path="*">
-            <NoMatch />
-        </Route>
-        {/* <Route path="*" render={() => {
+    <Suspense fallback={<LoaderAnimation />}>
+        <Switch>
+            <Route exact path="/" component={HomeComponent} />
+            <Route path="/about" component={AboutComponent} />
+            <Route path="/products" component={ProductsComponent} />
+            <SecuredRoute path="/admin" component={AdminComponent} />
+            <Route path="/login" component={LoginComponent} />
+            <Route path="*">
+                <NoMatch />
+            </Route>
+            {/* <Route path="*" render={() => {
             return (
                 <div className="text-center">
                     <article>
@@ -46,7 +56,8 @@ export default (
                 </div>
             );
         }} /> */}
-    </Switch>
+        </Switch>
+    </Suspense>
 );
 
 function NoMatch() {
