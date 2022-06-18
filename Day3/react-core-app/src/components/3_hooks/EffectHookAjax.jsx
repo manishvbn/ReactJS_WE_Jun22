@@ -83,24 +83,28 @@ import DataTable from '../common/DataTable';
 import LoaderAnimation from '../common/LoaderAnimation';
 
 const EffectHookAjax = () => {
-    const [data, setData] = useState({ posts: [], message: "Loading Data, please wait...", flag: false });
-
-    // useEffect(async() => {
-    //     try {
-    //         let posts_data = await postApiClient.getAllPosts();
-    //         setData({ posts: [...posts_data], message: "", flag: true });
-    //     } catch(eMsg) {
-    //         setData({ posts: [], message: eMsg, flag: true });
-    //     }
-    // }, []);
-
-    useEffect(async() => {
+    async function getAllPosts() {
         try {
-            let posts_data = await postApiClient.getAllPostsAsync();
+            let posts_data = await postApiClient.getAllPosts();
             setData({ posts: [...posts_data], message: "", flag: true });
-        } catch(eMsg) {
+        } catch (eMsg) {
             setData({ posts: [], message: eMsg, flag: true });
         }
+    }
+
+    // async function getAllPosts() {
+    //     try {
+    //         let posts_data = await postApiClient.getAllPostsAsync();
+    //         setData({ posts: [...posts_data], message: "", flag: true });
+    //     } catch (eMsg) {
+    //         setData({ posts: [], message: eMsg, flag: true });
+    //     }
+    // }
+
+    const [data, setData] = useState({ posts: [], message: "Loading Data, please wait...", flag: false });
+
+    useEffect(() => {
+        getAllPosts();
     }, []);
 
     return (
