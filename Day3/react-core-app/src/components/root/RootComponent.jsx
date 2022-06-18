@@ -5,6 +5,7 @@ import CrudAssignment from '../1_crud/CrudAssignment';
 import AjaxComponent from '../2_ajax/AjaxComponent';
 import EffectHookAjax from '../3_hooks/EffectHookAjax';
 import EffectHookDemo from '../3_hooks/EffectHookDemo';
+import SiblingCommunication from '../3_hooks/SiblingCommunication';
 import StateHookDemo from '../3_hooks/StateHookDemo';
 import ErrorHandler from '../common/ErrorHandler';
 
@@ -16,7 +17,8 @@ const RootComponent = () => {
                 {/* <AjaxComponent /> */}
                 {/* <StateHookDemo /> */}
                 {/* <EffectHookDemo /> */}
-                <EffectHookAjax />
+                {/* <EffectHookAjax /> */}
+                <SiblingCommunication />
             </ErrorHandler>
         </div>
     );

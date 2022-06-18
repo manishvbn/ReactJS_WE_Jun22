@@ -55,10 +55,6 @@ class Counter extends Component {
             interval: PropTypes.number
         };
     }
-
-    // componentDidMount() {
-    //     console.log("Counter - ", this.context);
-    // }
 }
 
 class CounterSibling extends Component {
