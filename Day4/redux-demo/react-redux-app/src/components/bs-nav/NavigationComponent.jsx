@@ -1,11 +1,11 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 
-import SwitchRoutes from '../../routes';
+import SwitchComponent from '../../routes';
 
 import './NavigationComponent.css';
 
-var logo = require('../../logo.svg').default;
+var logo = require('../../assets/redux.svg').default;
 
 const NavigationComponent = () => {
     return (
@@ -13,8 +13,8 @@ const NavigationComponent = () => {
             <nav className="navbar navbar-expand-sm bg-dark navbar-dark fixed-top">
                 <div className="container-fluid">
                     <NavLink className="navbar-brand d-flex flex-column align-items-center" to="/">
-                        <img src={logo} alt="React" width="40" height="28" className="d-inline-block align-text-top" />
-                        React Routing
+                        <img src={logo} alt="React" width="70" height="28" className="d-inline-block align-text-top" />
+                        React Redux
                     </NavLink>
 
                     <button type="button" className="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#myNavbar">
@@ -36,28 +36,46 @@ const NavigationComponent = () => {
                                 </NavLink>
                             </li>
                             <li className="nav-item px-3">
+                                <NavLink className="nav-link d-flex flex-column align-items-center" to="/hoc1">
+                                    <i className="bi bi-dice-1-fill"></i>
+                                    <span>HOC One</span>
+                                </NavLink>
+                            </li>
+                            <li className="nav-item px-3">
+                                <NavLink className="nav-link d-flex flex-column align-items-center" to="/hoc2">
+                                    <i className="bi bi-dice-2-fill"></i>
+                                    <span>HOC Two</span>
+                                </NavLink>
+                            </li>
+                            <li className="nav-item px-3">
+                                <NavLink className="nav-link d-flex flex-column align-items-center" to="/counter">
+                                    <i className="bi bi-123"></i>
+                                    <span>Counter</span>
+                                </NavLink>
+                            </li>
+                            <li className="nav-item px-3">
+                                <NavLink className="nav-link d-flex flex-column align-items-center" to="/fcounter">
+                                    <i className="bi bi-123"></i>
+                                    <span>FCounter</span>
+                                </NavLink>
+                            </li>
+                            <li className="nav-item px-3">
+                                <NavLink className="nav-link d-flex flex-column align-items-center" to="/fcounterroot">
+                                    <i className="bi bi-123"></i>
+                                    <span>FCounterRoot</span>
+                                </NavLink>
+                            </li>
+                            <li className="nav-item px-3">
                                 <NavLink className="nav-link d-flex flex-column align-items-center" to="/products">
-                                    <i className="bi bi-file-earmark-ppt-fill"></i>
+                                    <i className="bi bi-box"></i>
                                     <span>Products</span>
-                                </NavLink>
-                            </li>
-                            <li className="nav-item px-3">
-                                <NavLink className="nav-link d-flex flex-column align-items-center" to="/admin">
-                                    <i className="bi bi-shield-lock-fill"></i>
-                                    <span>Admin</span>
-                                </NavLink>
-                            </li>
-                            <li className="nav-item px-3">
-                                <NavLink className="nav-link d-flex flex-column align-items-center" to="/assign">
-                                    <i className="bi bi-flag-fill"></i>
-                                    <span>Assignment</span>
                                 </NavLink>
                             </li>
 
                             <li className="nav-item px-3">
-                                <NavLink className="nav-link d-flex flex-column align-items-center" to="/login">
+                                <NavLink className="nav-link d-flex flex-column align-items-center" to="/portals">
                                     <i className="bi bi-person-square"></i>
-                                    <span>Login</span>
+                                    <span>Portals</span>
                                 </NavLink>
                             </li>
 
@@ -72,9 +90,11 @@ const NavigationComponent = () => {
                 </div>
             </nav>
 
-            <>
-                {SwitchRoutes}
-            </>
+            <div className="card border-0 shadow my-5">
+                <div className="card-body">
+                    {SwitchComponent}
+                </div>
+            </div>
         </>
     );
 };
