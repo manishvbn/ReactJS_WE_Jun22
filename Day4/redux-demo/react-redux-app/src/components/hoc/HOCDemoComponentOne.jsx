@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
+import ClockHOC from './ClockHOC';
 import DataHOC from './DataHOC';
 import ErrorHandlerHOC from './ErrorHandlerHOC';
 
 class HOCDemoComponentOne extends Component {
     render() {
-        throw new Error("Just for Demo");
+        // throw new Error("Just for Demo");
 
         return (
             <div className='mt-5'>
@@ -24,5 +25,5 @@ class HOCDemoComponentOne extends Component {
 
 // export default DataHOC(HOCDemoComponentOne);
 
-export default ErrorHandlerHOC(DataHOC(HOCDemoComponentOne));
+export default ClockHOC(ErrorHandlerHOC(DataHOC(HOCDemoComponentOne)));
 
