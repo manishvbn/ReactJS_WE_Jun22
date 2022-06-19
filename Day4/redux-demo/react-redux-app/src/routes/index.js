@@ -9,6 +9,9 @@ const AboutComponent = lazy(() => import('../components/about/AboutComponent'));
 const HOCDemoComponentOne = lazy(() => import('../components/hoc/HOCDemoComponentOne'));
 const HOCDemoComponentTwo = lazy(() => import('../components/hoc/HOCDemoComponentTwo'));
 const CounterContainer = lazy(() => import('../containers/counter/CounterContainer'));
+const FCounter = lazy(() => import('../components/f-counter/FCounter'));
+const FCounterRoot = lazy(() => import('../components/f-counter/FCounterRoot'));
+
 
 const img404 = require('../assets/http-404.jpg');
 
@@ -21,6 +24,8 @@ export default (
             <Route path="/hoc2" component={HOCDemoComponentTwo} />
             <Route path="/portals" component={PortalRoot} />
             <Route path="/counter" component={CounterContainer} />
+            <Route path="/fcounter" component={FCounter} />
+            <Route path="/fcounterroot" component={FCounterRoot} />
 
             {/* <Route path="/hoc1" render={(props) => (
                 <HOCDemoComponentOne data={"Data from the Router"} {...props} />
