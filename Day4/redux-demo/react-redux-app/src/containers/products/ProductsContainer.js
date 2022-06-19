@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 
 import * as productActions from '../../actions/productActions';
 import LoaderAnimation from '../../components/common/LoaderAnimation';
+import AddProductButton from '../../components/products/AddProductButton';
 import ProductListComponent from '../../components/products/ProductListComponent';
 
 class ProductsContainer extends Component {
@@ -12,6 +13,9 @@ class ProductsContainer extends Component {
                 {
                     this.props.flag ?
                         <>
+                            <div className='mt-3 mb-3'>
+                                <AddProductButton />
+                            </div>
                             <ProductListComponent products={this.props.products} />
                         </>
                         : <LoaderAnimation />
