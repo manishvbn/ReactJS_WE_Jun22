@@ -5,6 +5,8 @@ import HomeComponent from '../components/home/HomeComponent';
 import LoaderAnimation from '../components/common/LoaderAnimation';
 
 const AboutComponent = lazy(() => import('../components/about/AboutComponent'));
+const HOCDemoComponentOne = lazy(() => import('../components/hoc/HOCDemoComponentOne'));
+const HOCDemoComponentTwo = lazy(() => import('../components/hoc/HOCDemoComponentTwo'));
 
 const img404 = require('../assets/http-404.jpg');
 
@@ -13,6 +15,17 @@ export default (
         <Switch>
             <Route exact path="/" component={HomeComponent} />
             <Route path="/about" component={AboutComponent} />
+            <Route path="/hoc1" component={HOCDemoComponentOne} />
+            <Route path="/hoc2" component={HOCDemoComponentTwo} />
+
+            {/* <Route path="/hoc1" render={(props) => (
+                <HOCDemoComponentOne data={"Data from the Router"} {...props} />
+            )} />
+
+            <Route path="/hoc2" render={(props) => (
+                <HOCDemoComponentTwo data={"Data from the Router"} {...props} />
+            )} /> */}
+
             <Route path="*">
                 <NoMatch />
             </Route>
