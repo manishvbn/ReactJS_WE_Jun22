@@ -48,6 +48,12 @@ const NavigationComponent = () => {
                                 </NavLink>
                             </li>
                             <li className="nav-item px-3">
+                                <NavLink className="nav-link d-flex flex-column align-items-center" to="/portals">
+                                    <i className="bi bi-person-square"></i>
+                                    <span>Portals</span>
+                                </NavLink>
+                            </li>
+                            <li className="nav-item px-3">
                                 <NavLink className="nav-link d-flex flex-column align-items-center" to="/counter">
                                     <i className="bi bi-123"></i>
                                     <span>Counter</span>
@@ -69,13 +75,6 @@ const NavigationComponent = () => {
                                 <NavLink className="nav-link d-flex flex-column align-items-center" to="/products">
                                     <i className="bi bi-box"></i>
                                     <span>Products</span>
-                                </NavLink>
-                            </li>
-
-                            <li className="nav-item px-3">
-                                <NavLink className="nav-link d-flex flex-column align-items-center" to="/portals">
-                                    <i className="bi bi-person-square"></i>
-                                    <span>Portals</span>
                                 </NavLink>
                             </li>
 

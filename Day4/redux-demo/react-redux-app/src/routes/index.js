@@ -3,6 +3,7 @@ import { Switch, Route, Link, useLocation } from "react-router-dom";
 
 import HomeComponent from '../components/home/HomeComponent';
 import LoaderAnimation from '../components/common/LoaderAnimation';
+import PortalRoot from '../components/portals/PortalRoot';
 
 const AboutComponent = lazy(() => import('../components/about/AboutComponent'));
 const HOCDemoComponentOne = lazy(() => import('../components/hoc/HOCDemoComponentOne'));
@@ -17,6 +18,7 @@ export default (
             <Route path="/about" component={AboutComponent} />
             <Route path="/hoc1" component={HOCDemoComponentOne} />
             <Route path="/hoc2" component={HOCDemoComponentTwo} />
+            <Route path="/portals" component={PortalRoot} />
 
             {/* <Route path="/hoc1" render={(props) => (
                 <HOCDemoComponentOne data={"Data from the Router"} {...props} />
