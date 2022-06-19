@@ -35,7 +35,7 @@ const RootComponent = () => {
     return (
         <div className='container'>
             <ErrorHandler>
-                <Router history={history}>
+                <Router history={history }>
                     <NavigationComponent />
                 </Router>
             </ErrorHandler>
