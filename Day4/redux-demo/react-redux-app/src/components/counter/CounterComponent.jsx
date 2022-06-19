@@ -12,17 +12,24 @@ const CounterComponent = (props) => {
                 </h2>
                 <button className="btn btn-primary" onClick={
                     (e) => {
-                        props.inc();
+                        props.inc(2);
                     }
                 }>
                     <span className='fs-4'>+</span>
                 </button>
                 <button className="btn btn-primary" onClick={
                     (e) => {
-                        props.dec();
+                        props.dec(2);
                     }
                 }>
                     <span className='fs-4'>-</span>
+                </button>
+                <button className="btn btn-primary" onClick={
+                    (e) => {
+                        props.mul(2);
+                    }
+                }>
+                    <span className='fs-4'>*</span>
                 </button>
             </div>
         </>
