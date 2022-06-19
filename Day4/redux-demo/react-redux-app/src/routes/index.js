@@ -8,6 +8,7 @@ import PortalRoot from '../components/portals/PortalRoot';
 const AboutComponent = lazy(() => import('../components/about/AboutComponent'));
 const HOCDemoComponentOne = lazy(() => import('../components/hoc/HOCDemoComponentOne'));
 const HOCDemoComponentTwo = lazy(() => import('../components/hoc/HOCDemoComponentTwo'));
+const CounterContainer = lazy(() => import('../containers/counter/CounterContainer'));
 
 const img404 = require('../assets/http-404.jpg');
 
@@ -19,6 +20,7 @@ export default (
             <Route path="/hoc1" component={HOCDemoComponentOne} />
             <Route path="/hoc2" component={HOCDemoComponentTwo} />
             <Route path="/portals" component={PortalRoot} />
+            <Route path="/counter" component={CounterContainer} />
 
             {/* <Route path="/hoc1" render={(props) => (
                 <HOCDemoComponentOne data={"Data from the Router"} {...props} />
