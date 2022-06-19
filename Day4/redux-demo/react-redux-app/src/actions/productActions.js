@@ -128,3 +128,22 @@ export function updateProduct(product) {
 
 // ----------------------------------------------------------- DELETE
 
+function deleteProductsSuccess(product, msg) {
+    return {
+        type: actionTypes.DELETE_PRODUCT_SUCCESS,
+        payload: { data: product, message: msg, flag: true }
+    };
+}
+
+export function deleteProduct(product) {
+    return function (dispatch) {
+        // TO DO - Delete Requested
+
+        productAPIClient.deleteProduct(product).then(_ => {
+            dispatch(deleteProductsSuccess(product, "Product Deleted Successfully..."));
+        }).catch(eMsg => {
+            console.error(eMsg);
+            // TO DO - Delete Failed
+        });
+    }
+}
